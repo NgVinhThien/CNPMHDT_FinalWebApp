@@ -1,11 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import danhmuc from './router/danhmuc.js'
-import hangxe from './router/hangxe.js'
+import categories from './router/categories.js'
 import _AuthMiddleWare from './common/_AuthMiddleWare.js';
-import user from './router/user.js';
-import { signIn} from './controller/user.js';
 
 
 const app= express();
@@ -17,11 +14,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.raw());
 app.use(cors());
 
-app.use('/', danhmuc);
-app.use('/', hangxe);
-app.use('/', signIn);
+app.use('/', categories);
+
 app.use(_AuthMiddleWare.isAuth);
-app.use('/', user);
 
 app.listen( PORT, ()=>{
     console.log("Running server...")

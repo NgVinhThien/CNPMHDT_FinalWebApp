@@ -1,10 +1,10 @@
 import mysql from 'mysql';
 
 var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root123",
-  database: "QLBanXe"
+  host: "enewspaper.ctcaoeyungfz.us-east-1.rds.amazonaws.com",
+  user: "admin",
+  password: "qqwas123",
+  database: "enewspaper"
 });
 
 connection.connect(function(err) {
