@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header'
 import '../_CSS/Home.css'
 import '../_CSS/verticalCard.css'
 import Stack from 'react-bootstrap/Stack'
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image'
+import axios from 'axios'
 
 export default function Home() {
+
+    const [data, setData]= useState([]);
+    useEffect(()=>{
+      axios.get("http://localhost:5000/getHotArticle")
+      .then(response=>setData(response.data))
+      .catch(error=>{
+        console.log(error);
+      })
+    }, []);
+  
     
   return (
     <div>
@@ -16,82 +27,20 @@ export default function Home() {
             <div class="noibat">
               <div class="largeTitle">Tin nổi bật</div>
               <div class="groupCard">
-                <div class="vertical-card">
-                    <img class="card-image" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"/>
-                    
-                    <div class= "card-body">
-                        <div class= "card-title">Card Title</div>
-                        <div class="card-description">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</div>
-                        <div class="article-info">
-                            <span>Tác giả</span>
-                            <span>Ngày đăng</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vertical-card">
-                    <img class="card-image" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"/>
-                    
-                    <div class= "card-body">
-                        <div class= "card-title">Card Title</div>
-                        <div class="card-description">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</div>
-                        <div class="article-info">
-                            <span>Tác giả</span>
-                            <span>Ngày đăng</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="vertical-card">
-                    <img class="card-image" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"/>
-                    
-                    <div class= "card-body">
-                        <div class= "card-title">Card Title</div>
-                        <div class="card-description">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</div>
-                        <div class="article-info">
-                            <span>Tác giả</span>
-                            <span>Ngày đăng</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                {/* <Card style={{ width: '16rem' }}>
-                      <Card.Img variant="top" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1" />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text style={{marginBottom: 0}}>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                        <div class="article-info">
-                            <span>Tác giả</span>
-                            <span>Ngày đăng</span>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                <Card style={{ width: '16rem' }}>
-                      <Card.Img variant="top" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1" />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
-                <Card style={{ width: '16rem' }}>
-                      <Card.Img variant="top" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1" />
-                      <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                          Some quick example text to build on the card title and make up the
-                          bulk of the card's content.
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>  */}
+                {data.map(item=>(
+                  <div class="vertical-card">
+                  <img class="card-image" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"/>
+                  
+                  <div class= "card-body">
+                      <div class= "card-title">{item.title}</div>
+                      <div class="card-description">{item.abstract}</div>
+                      <div class="article-info">
+                          <span>Tác giả</span>
+                          <span>{item.publish_date}</span>
+                      </div>
+                  </div>
+                  
+              </div>))}
               </div>
             </div>
             <div class="largeTitle">Tin mới</div>
