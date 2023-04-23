@@ -1,0 +1,132 @@
+
+.main-home{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 30px;
+   
+}
+.left-home{
+    width: 70%;
+    border-right: 1.5px solid gray;
+    margin: 0 1%;
+    padding-right: 2%;
+}
+.right-home{
+    width: 30%;
+}
+.largeTitle{
+    font-size: 35px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.smallTitle{
+    font-size: 25px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+/* CSS card */
+.noibat{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* margin: 0 5%; */
+}
+.groupCard{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.cardInfo{
+    width: 350px;
+    position: relative;
+    top: 4px;
+}
+.cardInfo:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top: 0px;
+}
+.cardImg{
+    width: 350px;
+    height: 250px;
+}
+.groupCard{
+    display: flex;
+    justify-content: space-around;
+}
+.cardCategory{
+    font-size: 12px;
+    border: 1.5px solid #2FA1B3;
+    padding: 0 3px;
+    border-radius: 4px;
+    color: #2FA1B3;
+}
+.card-title:hover{
+    color: #2FA1B3;
+}
+
+
+
+.new-views{
+    width: 90%;
+    margin: 40px 5%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid lightgray;
+}
+.left{
+    width: 50%;
+    margin: 0 5%;
+}
+.newPost, .top10{
+    width: 100%;
+}
+.topViews{
+    width: 35%;
+    margin-left: 2%;
+    padding-left: 3%;
+    border-left: 1.5px solid lightgray;
+}
+.horizontalCard{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+}
+
+.smallCard{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+}
+
+.custom-card-title{
+    font-size: 15px;
+}
+
+.cardHorizontalImg{
+    width: 150px;
+    height: 100px;
+}
+.cardHorizontal-Body{
+    margin-left: 15px;
+}
+
+.topViewBg{
+    width: 350px;
+    height: 200px;
+}
