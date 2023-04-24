@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import $ from 'jquery';
 import 'jquery-datetimepicker';
 import 'jquery-datetimepicker/build/jquery.datetimepicker.min.css';
+import './css/DangKy.css'
 
 function Register() {
   const [username, setUsername] = useState('');
