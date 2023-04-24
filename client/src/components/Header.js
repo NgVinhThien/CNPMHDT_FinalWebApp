@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -7,9 +8,24 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+
+
+
+
+import '../_CSS/dropdown.css'
+
 const Landing = () => {
+  const [data, setData]= useState([]);
+  useEffect(()=>{
+    axios.get("http://localhost:5000/categories")
+    .then((res)=> setData(res.data))
+    .catch((err)=>{
+        console.log(err);
+    }, []);
+
+  })  
   return (
-    <div>
+    <div style={{width: '100%'}}>
     <Carousel>
       <Carousel.Item>
         <img
@@ -61,21 +77,16 @@ const Landing = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
+            
+            <NavDropdown title="Chuyên mục" id="navbarScrollingDropdown" style={{position: 'relative'}} >
+              {data.map(item=>(
+                <NavDropdown.Item href="#action3" key={item.id}>{item.name}</NavDropdown.Item>
+              ))} 
             </NavDropdown>
-            <Nav.Link href="#" disabled>
+            <Nav.Link href="#action1">Tag</Nav.Link>
+            {/* <Nav.Link href="#" disabled>
               Link
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -89,6 +100,11 @@ const Landing = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
+   
+   
+
+    
     </div>
   );
 }
