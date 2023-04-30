@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    align-self: center;
     margin-top: 15px;
    
 }
@@ -73,6 +74,7 @@
 }
 .card-title:hover{
     color: #2FA1B3;
+    cursor: pointer;
 }
 
 

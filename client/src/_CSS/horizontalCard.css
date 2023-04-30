@@ -1,0 +1,23 @@
+.horizontal-card{
+    height: 8rem;
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.horizontal-card-image{
+    height: 100%;
+    width: 10rem;
+    border-radius: 5px;
+}
+.horizontal-card-body{
+    height: 100%;
+    width: 38rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
