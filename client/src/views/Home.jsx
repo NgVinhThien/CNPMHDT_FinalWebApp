@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import '../_CSS/Home.css'
 import '../_CSS/verticalCard.css'
 import '../_CSS/horizontalCard.css'
+import '../_CSS/smallCard.css'
 // import Stack from 'react-bootstrap/Stack'
 // import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image'
@@ -65,10 +67,25 @@ export default function Home() {
         </div>
         <div class= "right-home">
           <Image class="image-of-right-home" style={{width: '100%', margin: 0, padding: 0}} src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"/>
-          <div class="smallTitle">Tin nổi bật</div>
+          <div class= "tinnoibat">
+            <div class="smallTitle">Tin nổi bật</div>
+            <div class="small-card">
+              <img class="small-card-image" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"></img>
+              <div class= "small-card-body">
+                <div class= "card-title small-title">Trường đại học Sư phạm Kỹ thuật Thành phố Hồ Chí Minh</div>
+                 {/* <div class="card-description">Trường đại học sư phạm kỹ thuật thành phố Hồ Chí Minh</div> */}
+                <div class="article-info">
+                  <span>Ngày đăng</span>
+                  <span>01/05/2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
          
         </div>
       </div>
+      <Footer/>
     </div>
     
     
