@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import $ from 'jquery';
 import DateTimePicker from 'react-datetime-picker';
 import './css/DangKy.css'
+document.body.style.backgroundColor = "#f1f1f1";
 
 function DangKy() {
   return (
