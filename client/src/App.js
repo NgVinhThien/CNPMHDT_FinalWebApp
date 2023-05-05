@@ -1,6 +1,9 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 import Home from './views/Home'
+// import DangNhap from './views/DangNhap'
+// import DangKy from './views/DangKy'
+import ShowPost from './views/ShowPost'
 
 function App() {
   return <Router>
@@ -8,8 +11,8 @@ function App() {
       <Route path='/' element= {<Home/>}/>
       {/* <Route path='/DangKy' element= {<DangKy/>}/> */}
       <Route path='/showpost' element={<ShowPost/>}/>
-      <Route path='/DangNhap' element= {<DangNhap/>}/>
-      <Route path='/DangKy' element= {<DangKy/>}/>
+      {/* <Route path='/DangNhap' element= {<DangNhap/>}/>
+      <Route path='/DangKy' element= {<DangKy/>}/> */}
 
     </Routes>
     
