@@ -30,7 +30,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.card-body{
+.vertical-card-body{
     margin: 0 7px;
 }
 .card-description{

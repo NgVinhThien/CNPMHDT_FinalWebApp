@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Menu from '../components/Menu';
 import '../_CSS/Home.css'
 import '../_CSS/verticalCard.css'
 import '../_CSS/horizontalCard.css'
 import '../_CSS/smallCard.css'
-// import Stack from 'react-bootstrap/Stack'
-// import Card from 'react-bootstrap/Card';
+
 import Image from 'react-bootstrap/Image'
 import axios from 'axios'
 
@@ -25,6 +25,8 @@ export default function Home() {
   return (
     <div>
       <Header/>
+      <Menu/>
+      <navigationbar/>
       <div class= "main-home">
       <div class="left-home">
             <div class="noibat">
@@ -34,7 +36,7 @@ export default function Home() {
                   <div class="vertical-card">
                   <img class="card-image" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"/>
                   
-                  <div class= "card-body">
+                  <div class= "vertical-card-body">
                       <div class= "card-title">{item.title}</div>
                       <div class="card-description">{item.abstract}</div>
                       <div class="article-info">

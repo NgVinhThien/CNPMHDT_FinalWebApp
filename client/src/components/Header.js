@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
+import '../_CSS/dropdown.css'
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-import '../_CSS/dropdown.css'
+
+
+
 
 const Landing = () => {
+  
   const [data, setData]= useState([]);
   useEffect(()=>{
     axios.get("http://localhost:5000/categories")
     .then((res)=> setData(res.data))
     .catch((err)=>{
         console.log(err);
-    }, []);
-
-  })  
+    }, []);})  
   return (
+
     <div style={{width: '100%'}}>
     <Carousel>
       <Carousel.Item>
@@ -62,7 +67,7 @@ const Landing = () => {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
-    </Carousel>
+    </Carousel> 
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
@@ -75,8 +80,11 @@ const Landing = () => {
           >
             
             <NavDropdown title="Chuyên mục" id="navbarScrollingDropdown" style={{position: 'relative'}} >
+           
               {data.map(item=>(
-                <NavDropdown.Item href="#action3" key={item.id}>{item.name}</NavDropdown.Item>
+                <Dropdown.Item href="#action3" key={item.id}>{item.name}
+                <Container fluid style={{height: '100px', backgroundColor: 'yellow'}}></Container>
+                </Dropdown.Item>
               ))} 
             </NavDropdown>
             <Nav.Link href="#action1">Tag</Nav.Link>
@@ -95,11 +103,7 @@ const Landing = () => {
           </Form>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
-    
-   
-   
-
+    </Navbar>   
     
     </div>
   );
