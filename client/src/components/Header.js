@@ -10,6 +10,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 
@@ -75,22 +77,71 @@ const Landing = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
+            style={{ maxHeight: '100px'}}
             navbarScroll
           >
             
-            <NavDropdown title="Chuyên mục" id="navbarScrollingDropdown" style={{position: 'relative'}} >
-           
-              {data.map(item=>(
+            <NavDropdown title="Chuyên mục" id="navbarScrollingDropdown">
+              <Container style={{position: 'absolute', left: '0px',  backgroundColor: 'orange', width: '1000px'}}>
+               
+              <Row style={{display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap'}}>
+                <Col>1 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                <Col>2 of 3
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
+                </Col>
+                
+              </Row>
+              </Container>
+              {/* {data.map(item=>(
                 <Dropdown.Item href="#action3" key={item.id}>{item.name}
-                <Container fluid style={{height: '100px', backgroundColor: 'yellow'}}></Container>
                 </Dropdown.Item>
-              ))} 
+              ))}  */}
             </NavDropdown>
             <Nav.Link href="#action1">Tag</Nav.Link>
-            {/* <Nav.Link href="#" disabled>
+            <Nav.Link href="#" disabled>
               Link
-            </Nav.Link> */}
+            </Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

@@ -25,8 +25,7 @@ export default function Home() {
   return (
     <div>
       <Header/>
-      <Menu/>
-      <navigationbar/>
+      {/* <Menu/> */}
       <div class= "main-home">
       <div class="left-home">
             <div class="noibat">
