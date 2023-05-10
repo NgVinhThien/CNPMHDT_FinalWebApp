@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import categories from './router/categories.js'
 import articles from './router/articles.js'
+import tags from './router/tags.js';
 import _AuthMiddleWare from './common/_AuthMiddleWare.js';
 
 
@@ -17,6 +18,7 @@ app.use(cors());
 
 app.use('/', categories);
 app.use('/', articles);
+app.use('/', tags);
 
 
 app.use(_AuthMiddleWare.isAuth);

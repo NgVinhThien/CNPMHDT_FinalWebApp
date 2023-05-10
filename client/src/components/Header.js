@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import '../_CSS/dropdown.css'
-
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -14,18 +13,26 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-
-
-
 const Landing = () => {
-  
-  const [data, setData]= useState([]);
+  const [categories, setCategory]= useState([]);
   useEffect(()=>{
-    axios.get("http://localhost:5000/categories")
-    .then((res)=> setData(res.data))
-    .catch((err)=>{
-        console.log(err);
-    }, []);})  
+    axios.get(`http://localhost:5000/mainCategories`)
+    .then(response=> setCategory(response.data.data))
+    .catch(err=>{
+      console.log(err);
+    }, []);});
+  const [subCategories, setSubCategory]= useState([]);
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/subCategories`)
+    .then(response=>setSubCategory(response.data.data))
+    .catch(err=>{console.log(err)}, [])
+  })
+  const [tags, setTag]= useState([]);
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/tags`)
+    .then(response=>setTag(response.data.data))
+    .catch(err=>{console.log(err)}, []);
+  })
   return (
 
     <div style={{width: '100%'}}>
@@ -78,70 +85,30 @@ const Landing = () => {
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px'}}
-            navbarScroll
-          >
+            navbarScroll>
             
             <NavDropdown title="Chuyên mục" id="navbarScrollingDropdown">
-              <Container style={{position: 'absolute', left: '0px',  backgroundColor: 'orange', width: '1000px'}}>
-               
-              <Row style={{display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap'}}>
-                <Col>1 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                <Col>2 of 3
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                  <Dropdown.Item href="#action3">dropdown item</Dropdown.Item>
-                </Col>
-                
-              </Row>
+         
+              <Container style={{position: 'absolute', left: '0px',  backgroundColor: 'white', width: '1000px'}}>
+                  <Row style={{display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap'}}>
+                  {categories.map(category=>(
+                  <Col lg='3' style={{color: "#2FA1B3"}} key= {category.id} >{category.name}
+                    {subCategories.filter(subCat=> subCat.parent_id === category.id).map(subCat=>(
+                        <Dropdown.Item href="#action3" key= {subCat.id}>{subCat.name}</Dropdown.Item>
+                    ))}
+                  </Col>
+                ))}
+                 </Row>
               </Container>
-              {/* {data.map(item=>(
-                <Dropdown.Item href="#action3" key={item.id}>{item.name}
-                </Dropdown.Item>
-              ))}  */}
             </NavDropdown>
-            <Nav.Link href="#action1">Tag</Nav.Link>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
+           
+            <NavDropdown title="Tag">
+            {tags.map(tag=>(
+              <Dropdown.Item key={tag.id}>#{tag.value}</Dropdown.Item>
+            ))}
+              
+            </NavDropdown>
+
           </Nav>
           <Form className="d-flex">
             <Form.Control

@@ -11,5 +11,17 @@ categories.getAll= function(result){
         result(results);
     });
 }
+categories.getMainCategories= (result)=>{
+    connection.query("SELECT * FROM enewspaper.categories where parent_id is null", (err, resData)=>{
+        if(err) throw err;
+        result(resData);
+    })
+}
+categories.getSubCategories= (result)=>{
+    connection.query("SELECT * FROM enewspaper.categories where parent_id is not null ", (err, resData)=>{
+        if(err) throw err;
+        result(resData);
+    })
+}
 
 export default categories;
