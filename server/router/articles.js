@@ -1,8 +1,8 @@
 import express from 'express'
-import {getHotArticle} from '../controller/articles.js'
+import {getHotArticle, getDetails} from '../controller/articles.js'
 const router= express.Router();
 
 router.get('/getHotArticle', getHotArticle);
-
+router.get('/getDetails/:articleId', getDetails)
 export default router;
 

@@ -18,6 +18,7 @@ app.use(cors());
 app.use('/', categories);
 app.use('/', articles);
 
+
 app.use(_AuthMiddleWare.isAuth);
 
 app.listen( PORT, ()=>{

@@ -20,5 +20,10 @@ article.getHotArticle= (result)=>{
         result(results);
     })
 }
-
+article.getDetails= (articleId, result)=>{
+    connection.query("Select * from enewspaper.articles where id=?", articleId, (err, resData)=>{
+        if(err) throw err;
+        result(resData);
+    })
+}
 export default article;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate,  useParams, Link } from "react-router-dom";
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Menu from '../components/Menu';
@@ -15,13 +16,11 @@ export default function Home() {
     const [data, setData]= useState([]);
     useEffect(()=>{
       axios.get("http://localhost:5000/getHotArticle")
-      .then(response=>setData(response.data))
+      .then(response=>setData(response.data.data))
       .catch(error=>{
         console.log(error);
       })
     }, []);
-  
-    
   return (
     <div>
       <Header/>
@@ -36,7 +35,8 @@ export default function Home() {
                   <img class="card-image" src="https://th.bing.com/th/id/OIP.iSu2RcCcdm78xbxNDJMJSgHaEo?pid=ImgDet&rs=1"/>
                   
                   <div class= "vertical-card-body">
-                      <div class= "card-title">{item.title}</div>
+                     
+                      <Link class= "card-title" to={`/showpost/${item.id}`} >{item.title}</Link>
                       <div class="card-description">{item.abstract}</div>
                       <div class="article-info">
                           <span>Tác giả</span>
@@ -61,8 +61,6 @@ export default function Home() {
                  </div>
                </div>
               ))}
-             
-              
             </div>
             
         </div>
