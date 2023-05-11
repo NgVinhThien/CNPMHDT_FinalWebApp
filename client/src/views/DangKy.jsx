@@ -2,9 +2,31 @@ import React, { useState } from 'react';
 import $ from 'jquery';
 import DateTimePicker from 'react-datetime-picker';
 import './css/DangKy.css'
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 document.body.style.backgroundColor = "#f1f1f1";
 
 function DangKy() {
+  function checkPassword(e) {
+    e.preventDefault();
+    const password = $('#txtPassword').val();
+    const confirmPassword = $('#txtConfirm').val();
+    const errorMessage = $('#password-error');
+
+    if (password !== confirmPassword) {
+      errorMessage.html('The password and confirm password fields do not match');
+      return false;
+    } else {
+      errorMessage.html('');
+      $('#frmRegister').off('submit').submit();
+    }
+  }
+  const [value, onChange] = useState(new Date());
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+  };
   return (
     <div>
       <meta charSet="UTF-8" />
@@ -21,7 +43,17 @@ function DangKy() {
           <label htmlFor="txtEmail">Email</label>
           <input type="email" id="txtEmail" name="email" placeholder="Nhập email" required />
           <label htmlFor="txtDOB">Ngày sinh</label>
-          <input type="text" id="txtDOB" name="dob" placeholder="Nhập ngày sinh" required />
+          {/* <input type="text" id="txtDOB" name="dob" placeholder="Nhập ngày sinh" required /> */}
+          <DateTimePicker
+            className="datetimepicker"
+            id="txtDOB"
+            name="dob"
+            onChange={onChange}
+            value={value}
+            format="dd/MM/y"
+            disableClock
+            required
+          />
           <label htmlFor="txtPassword">Mật khẩu</label>
           <input type="password" id="txtPassword" name="rawpwd" placeholder="Nhập mật khẩu" required />
           <label htmlFor="txtConfirm">Xác nhận mật khẩu</label>
